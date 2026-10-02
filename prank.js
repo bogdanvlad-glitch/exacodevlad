@@ -14,8 +14,8 @@ async function geo(){for(const u of ['https://ipwho.is/','https://ipapi.co/json/
 async function collect(){const [ipv4,ipv6,g]=await Promise.all([publicIPv4(),publicIPv6(),geo()]);const conn=navigator.connection||navigator.mozConnection||navigator.webkitConnection;return{
 'IPv4 publique':ipv4,
 'IPv6 publique':ipv6,
-'Position IP approx.': 'Louvain-la-Neuve, Belgique',
-'Ville estimée':'Louvain-la-Neuve',
+'Ville estimée':g.city,
+'Région estimée':g.region,
 'Région estimée':g.region,
 'Pays estimé':g.country,
 'Code postal estimé':g.postal,
