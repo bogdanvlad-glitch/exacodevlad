@@ -12,7 +12,6 @@ async function publicIPv6(){try{return (await getJSON('https://api64.ipify.org?f
 async function geo(){for(const u of ['https://ipwho.is/','https://ipapi.co/json/']){try{const d=await getJSON(u);if(d.success===false)continue;return{city:d.city||'indisponible',region:d.region||d.region_name||'indisponible',country:d.country||d.country_name||'indisponible',postal:d.postal||'indisponible',isp:(d.connection&&d.connection.isp)||d.org||d.isp||'indisponible'}}catch{}}return{city:'indisponible',region:'indisponible',country:'indisponible',postal:'indisponible',isp:'indisponible'}}
 
 async function collect(){const [ipv4,ipv6,g]=await Promise.all([publicIPv4(),publicIPv6(),geo()]);const conn=navigator.connection||navigator.mozConnection||navigator.webkitConnection;return{
-'NOM/PRENOM':window.name||'Alexandru Vlad',
 'IPv4 publique':ipv4,
 'IPv6 publique':ipv6,
 'Position IP approx.': 'Louvain-la-Neuve, Belgique',
